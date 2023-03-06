@@ -28,4 +28,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_143300) do
     t.datetime "updated_at", null: false
     t.index ["city_id"], name: "index_people_on_city_id"
   end
+
+  add_foreign_key "people", "cities"
 end
