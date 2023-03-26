@@ -3,8 +3,6 @@ class CreateCities < ActiveRecord::Migration[7.0]
     create_table :cities do |t|
       t.string :name
       t.integer :zip
-
-      t.timestamps
     end
   end
 end
