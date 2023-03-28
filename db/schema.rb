@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_13_143852) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_27_222152) do
   create_table "assignments", force: :cascade do |t|
     t.integer "teacher_id", null: false
     t.integer "course_id", null: false
@@ -64,10 +64,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_13_143852) do
     t.string "type", null: false
     t.string "first_name"
     t.string "last_name"
-    t.string "email"
+    t.string "email", default: "", null: false
     t.string "address"
-    t.integer "city_id", null: false
+    t.integer "city_id"
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.index ["city_id"], name: "index_people_on_city_id"
+    t.index ["email"], name: "index_people_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_people_on_reset_password_token", unique: true
   end
 
   create_table "person_roles", force: :cascade do |t|
