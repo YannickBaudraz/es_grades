@@ -1,4 +1,6 @@
 class City < ApplicationRecord
+  has_many :people
+
   validates :name, presence: true
   validates :zip, presence: true, numericality: {
     only_integer: true,
