@@ -1,4 +1,20 @@
                                   Prefix Verb   URI Pattern                                                                                       Controller#Action
+                                    root GET    /                                                                                                 home#index
+                      new_person_session GET    /people/sign_in(.:format)                                                                         devise/sessions#new
+                          person_session POST   /people/sign_in(.:format)                                                                         devise/sessions#create
+                  destroy_person_session DELETE /people/sign_out(.:format)                                                                        devise/sessions#destroy
+                     new_person_password GET    /people/password/new(.:format)                                                                    devise/passwords#new
+                    edit_person_password GET    /people/password/edit(.:format)                                                                   devise/passwords#edit
+                         person_password PATCH  /people/password(.:format)                                                                        devise/passwords#update
+                                         PUT    /people/password(.:format)                                                                        devise/passwords#update
+                                         POST   /people/password(.:format)                                                                        devise/passwords#create
+              cancel_person_registration GET    /people/cancel(.:format)                                                                          devise/registrations#cancel
+                 new_person_registration GET    /people/sign_up(.:format)                                                                         devise/registrations#new
+                edit_person_registration GET    /people/edit(.:format)                                                                            devise/registrations#edit
+                     person_registration PATCH  /people(.:format)                                                                                 devise/registrations#update
+                                         PUT    /people(.:format)                                                                                 devise/registrations#update
+                                         DELETE /people(.:format)                                                                                 devise/registrations#destroy
+                                         POST   /people(.:format)                                                                                 devise/registrations#create
         turbo_recede_historical_location GET    /recede_historical_location(.:format)                                                             turbo/native/navigation#recede
         turbo_resume_historical_location GET    /resume_historical_location(.:format)                                                             turbo/native/navigation#resume
        turbo_refresh_historical_location GET    /refresh_historical_location(.:format)                                                            turbo/native/navigation#refresh
