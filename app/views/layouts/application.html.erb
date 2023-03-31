@@ -12,7 +12,9 @@
 
 <body>
 
-<%= render "shared/navbar" %>
+<% if person_signed_in? %>
+  <%= render "shared/navbar" %>
+<% end %>
 
 <main class="container">
   <p class="notice"><%= notice %></p>
