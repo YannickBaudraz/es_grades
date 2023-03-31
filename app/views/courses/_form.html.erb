@@ -12,6 +12,36 @@
   <% end %>
 
   <div>
+    <%= form.label :slug %>
+    <%= form.text_field :slug %>
+  </div>
+
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.label :category %>
+    <%= form.collection_select :category_id, Category.all, :id, :name %>
+  </div>
+
+  <div>
+    <%= form.label :quarter %>
+    <%= form.collection_select :quarter_id, Quarter.all, :id, :full_description %>
+  </div>
+
+  <div>
+    <%= form.label :promotion %>
+    <%= form.collection_select :promotion_id, Promotion.all, :id, :name %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
