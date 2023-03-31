@@ -5,10 +5,9 @@
 <div id="evaluations">
   <% @evaluations.each do |evaluation| %>
     <%= render evaluation %>
-    <p>
-      <%= link_to "Show this evaluation", evaluation %>
-    </p>
   <% end %>
 </div>
 
-<%= link_to "New evaluation", new_evaluation_path %>
+<% if current_person.teacher? %>
+  <%= link_to "New evaluation", new_evaluation_path %>
+<% end %>

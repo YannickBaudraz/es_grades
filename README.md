@@ -1,24 +1,29 @@
-# README
+# Es Grades
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup
 
-Things you may want to cover:
+_If the `rails` command is not found, you can use the `./bin/rails` command instead._
 
-* Ruby version
+1. Install dependencies
 
-* System dependencies
+    ```bash
+    bundle install
+    ```
 
-* Configuration
+1. Create database
 
-* Database creation
+    ```bash
+    rails db:migrate
+    ```
 
-* Database initialization
+1. Run the seeders
 
-* How to run the test suite
+    ```bash
+    rails db:seed
+    ```
 
-* Services (job queues, cache servers, search engines, etc.)
+1. Start the server
 
-* Deployment instructions
-
-* ...
+    ```bash
+    rails server
+    ```

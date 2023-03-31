@@ -7,9 +7,6 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <%= link_to "Promotions", promotions_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
           <%=
             if current_user.student?
               link_to "Evaluations", evaluations_path, class: "nav-link"
@@ -18,6 +15,12 @@
             end
           %>
         </li>
+
+        <% if current_user.teacher? %>
+          <li class="nav-item">
+            <%= link_to "Promotions", promotions_path, class: "nav-link" %>
+          </li>
+        <% end %>
       </ul>
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item dropdown-center">

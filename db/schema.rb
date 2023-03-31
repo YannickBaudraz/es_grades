@@ -100,7 +100,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_27_222152) do
   end
 
   create_table "quarters", force: :cascade do |t|
-    t.datetime "started_at"
+    t.date "started_at"
     t.date "ended_at"
     t.integer "semester_id", null: false
     t.index ["semester_id"], name: "index_quarters_on_semester_id"
@@ -112,8 +112,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_27_222152) do
   end
 
   create_table "semesters", force: :cascade do |t|
-    t.datetime "started_at"
-    t.datetime "ended_at"
+    t.date "started_at"
+    t.date "ended_at"
   end
 
   create_table "student_promotions", force: :cascade do |t|
