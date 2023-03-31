@@ -3,7 +3,7 @@ class EvaluationsController < ApplicationController
 
   # GET /evaluations or /evaluations.json
   def index
-    @evaluations = Evaluation.all
+    @evaluations = current_user.evaluations
   end
 
   # GET /evaluations/1 or /evaluations/1.json
@@ -13,6 +13,7 @@ class EvaluationsController < ApplicationController
   # GET /evaluations/new
   def new
     @evaluation = Evaluation.new
+    @evaluation.exam = Exam.find(params[:exam_id])
   end
 
   # GET /evaluations/1/edit
@@ -22,6 +23,9 @@ class EvaluationsController < ApplicationController
   # POST /evaluations or /evaluations.json
   def create
     @evaluation = Evaluation.new(evaluation_params)
+    @evaluation.exam = Exam.find(params[:exam_id])
+
+    @evaluation.teacher = current_user
 
     respond_to do |format|
       if @evaluation.save
@@ -49,22 +53,24 @@ class EvaluationsController < ApplicationController
 
   # DELETE /evaluations/1 or /evaluations/1.json
   def destroy
+    @exam = @evaluation.exam
     @evaluation.destroy
 
     respond_to do |format|
-      format.html { redirect_to evaluations_url, notice: "Evaluation was successfully destroyed." }
+      format.html { redirect_to exam_path(@exam), notice: "Evaluation was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_evaluation
-      @evaluation = Evaluation.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def evaluation_params
-      params.fetch(:evaluation, {})
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_evaluation
+    @evaluation = Evaluation.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def evaluation_params
+    params.require(:evaluation).permit(:grade, :student_id, :course_id, :exam_id)
+  end
 end

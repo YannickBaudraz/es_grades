@@ -5,7 +5,7 @@ class HomeController < ApplicationController
       render 'evaluations/index'
     else
       @courses = current_user.courses
-      render 'index'
+      render 'courses/index'
     end
   end
 end

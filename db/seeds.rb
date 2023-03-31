@@ -7,7 +7,7 @@ user_role = Role.create!(slug: "user", name: "User")
 
 print "Creating users...\n"
 teacher_user = Teacher.create!(first_name: "Teacher", last_name: "Teacher", email: "teacher@cpnv.ch", password: "password", password_confirmation: "password", roles: [admin_role], city: City.second)
-student_user = Student.create!(first_name: "Student", last_name: "Teacher", email: "student@cpnv.ch", password: "password", password_confirmation: "password", roles: [user_role], city: City.last)
+student_user = Student.create!(first_name: "Student", last_name: "Student", email: "student@cpnv.ch", password: "password", password_confirmation: "password", roles: [user_role], city: City.last)
 student1 = Student.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "password", roles: [user_role])
 student2 = Student.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "password", roles: [user_role])
 
@@ -110,12 +110,12 @@ end
 
 print "Creating an exam for each course...\n"
 0.upto(number_of_courses - 1) do |i|
-  exam = Exam.create!(name: Faker::Company.name, weight: Faker::Number.between(from: 0.1, to: 3.0), teacher: teachers.sample, course: courses.sample)
+  exam = Exam.create!(name: Faker::Company.name, weight: Faker::Float.between(from: 0.1, to: 3.0), teacher: teachers.sample, course: courses.sample)
   exam.save!
 end
 
 print "Creating evaluations for each exam...\n"
 exams = Exam.all
 exams.each do |exam|
-  Evaluation.create!(student: student_user, teacher: teachers.sample, exam: exam, grade: Faker::Number.between(from: 1.0, to: 6.0))
+  Evaluation.create!(student: student_user, teacher: teachers.sample, exam: exam, grade: Faker::Float.between(from: 1.0, to: 6.0))
 end
