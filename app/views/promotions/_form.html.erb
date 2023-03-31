@@ -12,6 +12,26 @@
   <% end %>
 
   <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :started_at %>
+    <%= form.date_field :started_at %>
+  </div>
+
+  <div>
+    <%= form.label :ended_at %>
+    <%= form.date_field :ended_at %>
+  </div>
+
+  <div>
+    <%= form.label :students %>
+    <%= select_tag "promotion[students][]", options_for_select(Student.all.map { |t| [t.full_name, t.id] }), { multiple: true } %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

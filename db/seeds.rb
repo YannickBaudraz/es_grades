@@ -110,12 +110,12 @@ end
 
 print "Creating an exam for each course...\n"
 0.upto(number_of_courses - 1) do |i|
-  exam = Exam.create!(name: Faker::Company.name, weight: Faker::Float.between(from: 0.1, to: 3.0), teacher: teachers.sample, course: courses.sample)
+  exam = Exam.create!(name: Faker::Company.name, weight: Faker::Number.between(from: 0.1, to: 3.0), teacher: teachers.sample, course: courses.sample)
   exam.save!
 end
 
 print "Creating evaluations for each exam...\n"
 exams = Exam.all
 exams.each do |exam|
-  Evaluation.create!(student: student_user, teacher: teachers.sample, exam: exam, grade: Faker::Float.between(from: 1.0, to: 6.0))
+  Evaluation.create!(student: student_user, teacher: teachers.sample, exam: exam, grade: Faker::Number.between(from: 1.0, to: 6.0))
 end

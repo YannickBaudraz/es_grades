@@ -14,6 +14,7 @@ class CoursesController < ApplicationController
   # POST /courses or /courses.json
   def create
     @course = Course.new(course_params)
+    @course.teachers << Teacher.find(current_user.id)
 
     respond_to do |format|
       if @course.save
@@ -58,6 +59,6 @@ class CoursesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def course_params
-    params.require(:course).permit(:slug, :title, :description, :category_id, :quarter_id, :promotion_id)
+    params.require(:course).permit(:slug, :title, :description, :category_id, :quarter_id, :promotion_id, :teacher_id)
   end
 end

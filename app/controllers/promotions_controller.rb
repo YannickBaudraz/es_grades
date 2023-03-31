@@ -6,22 +6,20 @@ class PromotionsController < ApplicationController
     @promotions = Promotion.all
   end
 
-  # GET /promotions/1 or /promotions/1.json
-  def show
-  end
-
   # GET /promotions/new
   def new
     @promotion = Promotion.new
   end
 
-  # GET /promotions/1/edit
-  def edit
-  end
-
   # POST /promotions or /promotions.json
   def create
-    @promotion = Promotion.new(promotion_params)
+    @promotion = Promotion.new(
+      name: promotion_params[:name],
+      started_at: promotion_params[:started_at],
+      ended_at: promotion_params[:ended_at])
+
+    @students = promotion_params['students'].map { |id| Student.find(id) }
+    @promotion.students = @students
 
     respond_to do |format|
       if @promotion.save
@@ -65,6 +63,6 @@ class PromotionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def promotion_params
-      params.fetch(:promotion, {})
+      params.require(:promotion).permit(:name, :started_at, :ended_at, :students => [])
     end
 end
