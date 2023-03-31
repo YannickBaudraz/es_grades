@@ -21,8 +21,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_27_222152) do
   create_table "categories", force: :cascade do |t|
     t.string "slug"
     t.string "name"
-    t.integer "category_id", null: false
-    t.index ["category_id"], name: "index_categories_on_category_id"
+    t.integer "parent_id"
+    t.integer "lft", null: false
+    t.integer "rgt", null: false
+    t.index ["lft"], name: "index_categories_on_lft"
+    t.index ["parent_id"], name: "index_categories_on_parent_id"
+    t.index ["rgt"], name: "index_categories_on_rgt"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -127,7 +131,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_27_222152) do
 
   add_foreign_key "assignments", "courses"
   add_foreign_key "assignments", "people", column: "teacher_id"
-  add_foreign_key "categories", "categories"
   add_foreign_key "courses", "categories"
   add_foreign_key "courses", "quarters"
   add_foreign_key "evaluations", "exams"

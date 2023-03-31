@@ -8,4 +8,12 @@ class Person < ApplicationRecord
 
   has_many :person_roles, dependent: :destroy
   has_many :roles, through: :person_roles
+
+  def teacher?
+    is_a?(Teacher)
+  end
+
+  def student?
+    is_a?(Student)
+  end
 end
