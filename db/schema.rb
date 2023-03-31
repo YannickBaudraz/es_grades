@@ -40,7 +40,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_27_222152) do
     t.text "description"
     t.integer "quarter_id", null: false
     t.integer "category_id", null: false
+    t.integer "promotion_id", null: false
     t.index ["category_id"], name: "index_courses_on_category_id"
+    t.index ["promotion_id"], name: "index_courses_on_promotion_id"
     t.index ["quarter_id"], name: "index_courses_on_quarter_id"
   end
 
@@ -61,6 +63,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_27_222152) do
     t.decimal "weight"
     t.datetime "passed_at"
     t.integer "teacher_id", null: false
+    t.integer "course_id", null: false
+    t.index ["course_id"], name: "index_exams_on_course_id"
     t.index ["teacher_id"], name: "index_exams_on_teacher_id"
   end
 
@@ -97,7 +101,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_27_222152) do
 
   create_table "quarters", force: :cascade do |t|
     t.datetime "started_at"
-    t.datetime "finished_at"
+    t.date "ended_at"
     t.integer "semester_id", null: false
     t.index ["semester_id"], name: "index_quarters_on_semester_id"
   end
@@ -132,10 +136,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_27_222152) do
   add_foreign_key "assignments", "courses"
   add_foreign_key "assignments", "people", column: "teacher_id"
   add_foreign_key "courses", "categories"
+  add_foreign_key "courses", "promotions"
   add_foreign_key "courses", "quarters"
   add_foreign_key "evaluations", "exams"
   add_foreign_key "evaluations", "people", column: "student_id"
   add_foreign_key "evaluations", "people", column: "teacher_id"
+  add_foreign_key "exams", "courses"
   add_foreign_key "exams", "people", column: "teacher_id"
   add_foreign_key "people", "cities"
   add_foreign_key "person_roles", "people"

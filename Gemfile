@@ -76,3 +76,5 @@ gem "bootstrap", "~> 5.2"
 gem "devise", "~> 4.9"
 
 gem "awesome_nested_set", "~> 3.5"
+
+gem "faker", "~> 3.1"
