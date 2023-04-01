@@ -1,5 +1,11 @@
 # Es Grades
 
+## Requirements
+
+| Name | Version   |
+|------|-----------|
+| Ruby | \>= 3.1.3 |
+
 ## Setup
 
 _If the `rails` command is not found, you can use the `./bin/rails` command instead._
