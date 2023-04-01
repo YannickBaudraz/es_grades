@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root "home#index"
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  devise_for :people, controllers: { registrations: "people/registration" }
+
+  resources :promotions
+  resources :evaluations
+  resources(:exams) {
+    resources :evaluations }
+  resources(:courses) {
+    resources :exams }
 end

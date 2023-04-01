@@ -1,0 +1,27 @@
+<%= form_with(model: evaluation, url: [evaluation.exam, evaluation]) do |form| %>
+  <% if evaluation.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(evaluation.errors.count, "error") %> prohibited this evaluation from being saved:</h2>
+
+      <ul>
+        <% evaluation.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :grade %>
+    <%= form.text_field :grade %>
+  </div>
+
+  <div class="flex flex-col w-full basis-full">
+    <%= form.label :student %>
+    <%= form.collection_select :student_id, Student.all, :id, :full_name %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

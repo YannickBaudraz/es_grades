@@ -1,24 +1,47 @@
-# README
+# Es Grades
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Requirements
 
-Things you may want to cover:
+| Name | Version   |
+|------|-----------|
+| Ruby | \>= 3.1.3 |
 
-* Ruby version
+## Setup
 
-* System dependencies
+_If the `rails` command is not found, you can use the `./bin/rails` command instead._
 
-* Configuration
+1. Install dependencies
 
-* Database creation
+    ```bash
+    bundle install
+    ```
 
-* Database initialization
+2. Create database
 
-* How to run the test suite
+    ```bash
+    rails db:migrate
+    ```
 
-* Services (job queues, cache servers, search engines, etc.)
+3. Run the seeders
 
-* Deployment instructions
+    ```bash
+    rails db:seed
+    ```
 
-* ...
+4. Start the server
+
+    ```bash
+    rails server
+    ```
+
+## Usage
+
+I made several YouTube videos to show the functionalities and how to use the app. You can find them here:
+
+- [Log -in as a student](https://youtu.be/Lq4sgByT6f0)
+- [Log -in as a teacher](https://youtu.be/0jzjAUkoPHE)
+- [Register as a student](https://youtu.be/_ZnLglHcmvc)
+- [Register as a teacher](https://youtu.be/eC4IhEP-OFw)
+- [Add grade to student](https://youtu.be/x5nfvUhKmTQ)
+- [Add course and assign promotion](https://youtu.be/lMvgoMHfiVQ)
+- [Create promotion and assign students](https://youtu.be/BR5B4I-DdCs)

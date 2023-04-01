@@ -1,0 +1,13 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Evaluations</h1>
+
+<div id="evaluations">
+  <% @evaluations.each do |evaluation| %>
+    <%= render evaluation %>
+  <% end %>
+</div>
+
+<% if current_person.teacher? %>
+  <%= link_to "New evaluation", new_evaluation_path %>
+<% end %>

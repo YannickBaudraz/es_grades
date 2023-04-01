@@ -1,0 +1,18 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @course %>
+
+<div>
+  <%= link_to "Add exam", new_course_exam_path(@course) %> |
+  <%= link_to "Edit this course", edit_course_path(@course) %> |
+  <%= link_to "Back to courses", courses_path %>
+
+  <%= button_to "Destroy this course", @course, method: :delete %>
+</div>
+
+<h2>Exams</h2>
+<% @course.exams.each do |exam| %>
+  <div>
+    <%= render exam %>
+  </div>
+<% end %>

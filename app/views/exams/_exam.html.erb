@@ -1,0 +1,16 @@
+<dl id="<%= dom_id exam %>" class="row">
+  <dt class="col-sm-3">Name:</dt>
+  <dd class="col-sm-9">
+    <%= link_to exam.name, exam %>
+  </dd>
+
+  <dt class="col-sm-3"> Weight:</dt>
+  <dd class="col-sm-9"><%= number_with_precision(exam.weight, precision: 2) %></dd>
+
+  <dt class="col-sm-3">Passed at:</dt>
+  <dd class="col-sm-9"><%= exam.passed_at %></dd>
+
+  <dt class="col-sm-3">Course</dt>
+  <dd class="col-sm-9"><%= exam.course.title %></dd>
+
+</dl>

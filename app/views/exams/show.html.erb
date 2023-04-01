@@ -1,0 +1,22 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @exam %>
+
+<div>
+  <%= link_to "Edit this exam", edit_exam_path(@exam) %> |
+  <%= link_to "Back to exams", exams_path %>
+
+  <%= button_to "Destroy this exam", @exam, method: :delete %>
+
+  <% if current_person.teacher? %>
+    <%= link_to "Add evaluation", new_exam_evaluation_path(@exam), class: "submit-button" %>
+  <% end %>
+</div>
+
+<% if @exam.evaluations.any? %>
+  <h2>Evaluations</h2>
+
+  <% @exam.evaluations.each do |evaluation| %>
+    <%= render evaluation %>
+  <% end %>
+<% end %>

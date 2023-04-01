@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @promotion %>
+
+<div>
+  <%= link_to "Edit this promotion", edit_promotion_path(@promotion) %> |
+  <%= link_to "Back to promotions", promotions_path %>
+
+  <%= button_to "Destroy this promotion", @promotion, method: :delete %>
+</div>
+
+<h2>Students</h2>
+
+<% @promotion.students.each do |student| %>
+  <%= render student %>
+<% end %>
